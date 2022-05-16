@@ -1,5 +1,5 @@
 ---
-title: Machine Learning Gin Python
+title: Machine Learning with Python
 author: Daniel Molina
 date: 23 May
 toc: true
@@ -20,7 +20,7 @@ lassoption: handout
 ::::
 
 :::: {.column width="50%"}
-- Assistant teacher at University of Granada. 
+- Senior lecturer at University of Granada. 
 - More than  15 years Working on AI.
 - Courses: Machine Learning and Preprocessing.
 - H-Index: 23
@@ -58,7 +58,7 @@ lassoption: handout
 
 ![Guido Van Rossum](guido.jpg)
 
-# Why Python
+# Why Python?
 
 ## It is popular
 
@@ -187,6 +187,18 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 ![](jupyter_console.jpg)
 
+## Colab 
+
+[https://colab.research.google.com/](https://colab.research.google.com/)
+
+- Service for programming in Python. 
+
+- Use for CPU or GPU (paying).
+
+## Colab
+
+![](colab.png){width="90%"}
+
 ## Spyder
 
 ![](Spyder-IDE.png)
@@ -199,4 +211,52 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 ![](python.png){width="70%"}
 
+# About the course
 
+## First day (Monday)
+
+- We will focus on supervised learning with Python. 
+
+- Learning by project.
+
+- Available Notebooks.
+
+--- 
+
+### Parts
+
+1. Pandas, simple preprocessing.
+
+2. Simple visualization.
+
+3. Scikit-learn with simple dataset.
+
+4. Working on a more complex dataset.
+  
+## Second day 
+
+- We will focus on unsupervised learning with Python.
+
+- Extracting information:
+    1. Automatic grouping. 
+    2. Rules Generation.
+    
+---
+
+### Parts
+
+1. Example Dataset.
+
+2. Grouping groups of datasets.
+
+3. Automatic Grouping.
+
+2. Visualization of centroids. 
+
+3. Automatic rules generation.
+
+# Questions?
+
+## We will start?
+
+![](start-button.jpg){width="50%"}
