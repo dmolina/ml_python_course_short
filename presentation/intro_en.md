@@ -1,0 +1,202 @@
+---
+title: Machine Learning Gin Python
+author: Daniel Molina
+date: 23 May
+toc: true
+slide_level: 2
+lassoption: handout
+---
+
+# About me
+
+## Daniel Molina Cabrera
+
+::: columns
+
+:::: {.column width="50%"}
+
+![](yo_serio.png){width="50%"}
+
+::::
+
+:::: {.column width="50%"}
+- Assistant teacher at University of Granada. 
+- More than  15 years Working on AI.
+- Courses: Machine Learning and Preprocessing.
+- H-Index: 23
+:::: 
+:::
+
+# Python
+
+## Python?
+
+![](python_real.jpg){width="45%"}
+
+## Python?
+
+![](monty_python.jpg){width="45%"}
+
+## Python?
+
+![](python_logo.png){width="45%"}
+
+---
+
+## It is a programming language
+
+
+- For generic usage.
+
+. . . 
+
+- Designed to be **easy to use** and **fun**.
+
+---
+
+## Invented by
+
+![Guido Van Rossum](guido.jpg)
+
+# Why Python
+
+## It is popular
+
+![](python_evolucion.png){width="70%"}
+
+## Many libraries in DS
+
+![](librerias_ciencia.png){width="70%"}
+
+## Specially in Machine Learning
+
+![](MLpython.png){width="70%"}
+
+## And Deep Learning
+
+![](DLpython.png){width="70%"}
+
+## Easy
+
+```
+from sys import argv
+
+def main(fname, word):
+    with open(fname, "r") as file:
+
+        for line in file:
+            if word in line:
+                print(line)
+
+if __name__ == "__main__":
+    main(argv[2], argv[1])
+
+```
+
+# Requirement
+
+## Requirement
+
+::: columns
+
+:::: {.column width="32%"}
+![](python_logo.png){with="80%"}
+::::
+:::: {.column width="32%"}
+![](logo-anaconda.png){with="80%"}
+::::
+:::: {.column width="32%"}
+![](brain3.jpg){with="80%"}
+::::
+:::
+
+## Requirement
+
+- Computer.
+
+- Any Operative System: Windows, MacOS, Linux.
+
+- We will use Python3 using Anaconda.
+
+![](logo-anaconda.png){width="25%"}
+
+## Installation
+
+From
+[https://docs.anaconda.com/anaconda/install/](https://docs.anaconda.com/anaconda/install/)
+
+![](anaconda_download.png)
+
+## windows
+
+## Install 
+![](install_win1.png){width="70%"}
+    
+## Install
+![](install_win2.png){width="70%"}
+
+## Install
+![](install_win3.png){width="70%"}
+ 
+## Install
+![](install_win4.png){width="70%"}
+
+## MacOs
+
+## Install 
+![](install_mac1.png){width="70%"}
+    
+## Install
+![](install_mac2.png){width="70%"}
+
+## Install
+![](install_mac3.png){width="70%"}
+ 
+## Install
+![](install_mac4.png){width="70%"}
+
+## Linux
+
+Using Anaconda
+
+```
+bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
+```
+
+# Frameworks
+
+## Notebook
+
+![](notebook2.png){width="70%"}
+
+---
+
+## Advantages
+
+- Code in cells. 
+
+- Interactive. 
+
+- Documentation, cells in markdown.
+
+---
+
+![](anaconda_navigator.jpg)
+
+---
+
+![](jupyter_console.jpg)
+
+## Spyder
+
+![](Spyder-IDE.png)
+
+## IPython Console
+
+![](ipython.png){width="70%"}
+
+## Python Console
+
+![](python.png){width="70%"}
+
+
