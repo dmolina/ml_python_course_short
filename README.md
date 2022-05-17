@@ -13,9 +13,12 @@ Material for a short course (two days) about Machine Learning using Python
   
 ## Introduction to Python (from Vanderplas)
 
+This material is from the excelent course of Vanderplas, an expert in Machine
+Learning:
+
 https://github.com/jakevdp/WhirlwindTourOfPython
 
-- (01-How-to-Run-Python-Code.ipynb)(https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/01-How-to-Run-Python-Code.ipynb)
+- [01-How-to-Run-Python-Code.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/01-How-to-Run-Python-Code.ipynb)
 - [02-Basic-Python-Syntax.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/02-Basic-Python-Syntax.ipynb)
 - [03-Semantics-Variables.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/03-Semantics-Variables.ipynb)
 - [04-Semantics-Operators.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/04-Semantics-Operators.ipynb)
@@ -29,7 +32,12 @@ https://github.com/jakevdp/WhirlwindTourOfPython
 - [12-Generators.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/12-Generators.ipynb)
 - [13-Modules-and-Packages.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/13-Modules-and-Packages.ipynb)
 - [14-Srings-and-Regular-Expressions.ipynb](https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/14-Strings-and-Regular-Expressions.ipynb)
-  
+
+He was [several books](https://jakevdp.github.io/pages/about.html), I recommend
+them, in particular "Python Data Science Handbook", it is rather good. The deep
+learning is short, you should use a specific book about that, but for ML using
+scikit-learn is enough.
+
 # Packages Management
 
 - [Pip introduction](https://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
