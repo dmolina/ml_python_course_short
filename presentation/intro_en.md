@@ -193,7 +193,9 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 - Service for programming in Python. 
 
-- Use for CPU or GPU (paying).
+- Use for CPU or GPU (paying after several hours).
+
+- It requires Google account.
 
 ## Colab
 
