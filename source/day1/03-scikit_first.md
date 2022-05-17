@@ -5,8 +5,8 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.6.0
+      format_version: '1.3'
+      jupytext_version: 1.13.8
   kernelspec:
     display_name: Python 3
     language: python
@@ -18,26 +18,24 @@ jupyter:
 
 <img src="https://s3.amazonaws.com/com.twilio.prod.twilio-docs/original_images/scikit-learn.png" width="30%">
 
-Importando las librerías necesarias
+First, we import pandas.
 
 ```python
 import pandas as pd
 ```
 
-## Lectura de Datos
+## Reading Data
 
+The loading of data is going to be through Pandas, usually from a CSV or Excel file.
 
-La entrada de datos se hace por medio de Pandas, normalmente de un fichero CSV o Excel.
-
-
-Almacenamos en una variables la url desde la que vamos a descragar el dataset
+We store in a variable the url from which we are going to download it.
 
 ```python
 url = "https://raw.githubusercontent.com/vkrit/data-science-class/master/WA_Fn-UseC_-Sales-Win-Loss.csv"
 
 ```
 
-Leemos el fichero csv con los datos
+Read the CSV file.
 
 ```python
 sales_data= pd.read_csv(url)
@@ -46,20 +44,19 @@ sales_data= pd.read_csv(url)
 ```python
 sales_data.head()
 ```
-
-Exploración de datos
+## Exploration of data
 
 ```python
 sales_data.head(n=2)
 ```
 
-Podemos ver los últimos registros también
+We can see the last rows:
 
 ```python
 sales_data.tail()
 ```
 
-Tipo de cada característica
+Check the type of each attribute:
 
 ```python
 sales_data.dtypes
@@ -73,10 +70,9 @@ sales_data.describe()
 sales_data.shape
 ```
 
-# Pequeña Visualización de los Datos
+# Small visualization of data
 
-
-Vamos a mostrar un poco los datos
+We are going to show a little the data.
 
 ```python
 import seaborn as sns
@@ -115,16 +111,13 @@ plt.show()
 sns.boxplot(data=sales_data, x="Region", y="Elapsed Days In Sales Stage")
 ```
 
-# Preprocesamiento de Datos
+# Data Preprocessing
 
+Now we are going to use Scikit-Learn to predict "Opportunity Result".
 
-Tras estudiar un poco los datos vamos a usar Scikit-Learn para predecir "Opportunity Result"
+The first first is to take in account that scikit-learn does not work with strings, so it is needed to codify the string as numeric values, labels.
 
-
-Lo primero es tener en cuenta que los algoritmos de ML no trabajan con strings, por lo que es necesario codificar dichas cadenas como valores numéricos, por ejemplo.
-
-
-Para ello, se usa la clase LabelEncoder(). Ponemos un ejemplo.
+In order to do that, we use the class `LabelEncoder()`:
 
 ```python
 from sklearn import preprocessing
@@ -136,7 +129,7 @@ print(encoded_value)
 ```
 
 ```python
-# La operación es reversible
+# The operation is reversible
 le.inverse_transform(encoded_value)
 ```
 
@@ -144,7 +137,7 @@ le.inverse_transform(encoded_value)
 le.inverse_transform([1])
 ```
 
-Tenemos bastante atributos de tipo cadena que pueden ser etiquetadas (el conjunto de valores es limitado)
+We have many attributes that should be labeled.
 
 ```python
 print("Supplies Subgroup' : ",sales_data['Supplies Subgroup'].unique())
@@ -155,7 +148,7 @@ print("Competitor Type : ",sales_data['Competitor Type'].unique())
 print("Supplies Group : ",sales_data['Supplies Group'].unique())
 ```
 
-Ahora vamos a transformar los datos mediante etiquetas, discretizando los datos.
+In order to do that, we create a `LabelEncoder` for each column, to avoid any conflcit.
 
 ```python
 # create the Labelencoder object
@@ -178,14 +171,13 @@ sales_data.head()
 sales_data.describe()
 ```
 
-# Elegir los atributos de interés
+# Select several interesting attributes
+
+We are going to select one attribute to predict, and the attributes used to do that.
 
 
-Primero vamos a elegir el atributo que queremos predecir, y los atributos que usaremos para predecirlo.
-
-
-- El objetivo es predecir "Opportunity Result".
-- Escogemos todos los atributos menos 'Opportunity Number'(y el objetivo, evidentemente siempre se quita).
+- The goal is to predict "Opportunity Result".
+- We choose all attributes except "Opportunity Number" (the goal, obviously, is always removed).
 
 ```python
 # select columns other than 'Opportunity Number','Opportunity Result'
@@ -201,16 +193,14 @@ data.head(n=2)
 target
 ```
 
-# División de datos en conjuntos de entrenamiento y test
+# Divide the data in training and test sets
 
-
-Para *evaluar* un algoritmo de ML es necesario dividir el conjunto de datos en dos partes:
+To *evaluate* how good is an ML algorithm is need to divide the data in two parts:
     
-- Conjunto de entrenamiento, utilizado para que el método de ML *aprenda*.
-- Conjunto de test, para evaluar cuánto se equivoca con sus predicciones tras haber aprendido.
+- **Training** set, used to *train* the ML algorithm.
+- **Test* set, to *evaluate* the performance of the ML algorithm. Obviously, test instances cannot be in training one.
 
-
-Para hacer la división usamos train_test_split, que divide de forma aleatoria entre conjunto de entrenamiento y test.
+To divide the division we will use train_test_split, that divide randomly in training and test.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -221,7 +211,7 @@ help(train_test_split)
 ```
 
 ```python
-data_train, data_test, target_train, target_test = train_test_split(data ,target, train_size = 0.70, random_state = 15)
+data_train, data_test, target_train, target_test = train_test_split(data, target, train_size = 0.70, random_state = 15)
 ```
 
 ```python
@@ -236,23 +226,21 @@ data_train.shape
 data_test.shape
 ```
 
-# Construcción del modelo
+# Training and predicting with a model
 
-
-Hay muchos modelos posibles disponibles desde Scikit-Learn.
+There are many models available in Scikit-learn.
 
 
 <img src=https://scikit-learn.org/stable/_static/ml_map.png>
 
+The API for all models is the same, in order to be able to replace one or another without problems.
 
-
-Usaremos dos modelos sencillos:
+In this first step we will use two simple models.
     
-- Naive-Bayes: Modelo de predicción Bayesiano, basado en estadística.
-- Linear SVC: Linear Support Vector Classification, muy popular.
+- Naive-Bayes: Bayesian model, based on statistics.
+- Linear SVC: Linear Support Vector Classification, popular model.
 
-
-## Primero aplicamos el Bayesiano (Naive-Bayes)
+## First we apply the Bayesian (Naive-Bayes)
 
 ```python
 # import the necessary module
@@ -260,7 +248,9 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 ```
 
-### Creamos el objeto del  modelo
+### We create the object of the model
+
+For the models there are several parameters to configure it, but the majority of them have rather good default values.
 
 ```python
 #create an object of the type GaussianNB
@@ -275,16 +265,15 @@ gnb
 help(GaussianNB)
 ```
 
-### Ahora aprendemos el modelo pasándole los datos de entrenamiento
+### Now we train the model with method `fit` and the training instances
 
 ```python
 model1 = gnb.fit(data_train, target_train)
 ```
 
-### Medimos el % de acierto con el conjunto de test
+### We measure the accuracy ratio using the test set
 
-
-Hacemos las predicciones del conjunto de test
+First, we use `predict` to predict the class for each instance of test.
 
 ```python
 pred1 = gnb.predict(data_test)
@@ -294,16 +283,21 @@ pred1 = gnb.predict(data_test)
 pred1
 ```
 
-comparando el vector de predicciones con los valores reales, en % de aciertos.
+Now we compare the accuracy using the real values. It is only one measure, there are a lot more.
 
 ```python
 print("Naive-Bayes accuracy : ",accuracy_score(target_test, pred1, normalize = True))
 ```
 
-Hemos obtenido un acierto del 75.9%, nada mal
+We have achieved a good accuracy value (for the simple model).
 
+### Cross Validation
 
-### Ejemplo con Cross Validation
+The division in train, test is usually not enough, because the results depends a lot of the simple grouping.
+
+In theory, you should have learn about `Cross Validation`. We are going to use it.
+
+<img src="https://miro.medium.com/max/4984/1*kheTr2G_BIB6S4UnUhFp8g.png">
 
 ```python
 from sklearn.model_selection import cross_val_score
@@ -321,10 +315,11 @@ scores
 np.mean(scores)
 ```
 
-## Ahora aplicamos el Linear SVC
+That accuracy value is more robust.
 
+## Now we will apply Linear SVC
 
-El comportamiento del Linear SVC se visualiza con el siguiente dibujo. Se verá en teoría.
+The Linear SVC behaviour is visualized with the following picture:
 
 
 <img src=https://www.dataquest.io/wp-content/uploads/2018/06/SVM-1.png>
@@ -335,37 +330,36 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
 ```
 
-Como se ve, todos los algoritmos se igual de la misma forma, el Interfaz es muy sencillo.
+As you can see, all algorithms are trained and tested in the same way, the API is very simple.
 
-
-### Creamos el modelo (con un número de iteraciones)
+### Create the model (with a number of iterations)
 
 ```python
 #create an object of type LinearSVC
-# Requiere parámetros, como el número de iteraciones
+# It requires parameters, like the number of iterations
 svc_model = LinearSVC(random_state=10,max_iter=3000)
 ```
 
-### Ahora aprendemos el modelo pasándole los datos de entrenamiento
+### Training
 
-
-Este modelo lleva mucho más tiempo
+This model training takes a lot of time:
 
 ```python
 svc_model.fit(data_train, target_train)
 ```
 
-### Medimos el % de acierto con el conjunto de test
+### Test
+
+We measure the accuracy with the test set:
 
 ```python
 pred2 = svc_model.predict(data_test)
-print("LinearSVC accuracy : ",accuracy_score(target_test, pred2, normalize = True))
+print("LinearSVC accuracy : ", accuracy_score(target_test, pred2, normalize = True))
 ```
 
-# Matriz de confusión
+# Confusion Matrix
 
-
-Hasta ahora hemos visto sólo el % de aciertos, pero nos puede interesar identificar los falsos positivos, y los falsos negativos.
+Until now we have checked only the % of accuracy, but it could be useful to identify true/false positives and true/false negatives.
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -386,10 +380,37 @@ data_test.shape[0]
 ```
 
 ```python
-print("Verdadero Positivos:", m[0,0]/total)
-print("Falsos Positivos:", m[0,1]/total)
-print("Verdadero Negativos:", m[1,1]/total)
-print("Falsos Negativos:", m[1,0]/total)
+print("True Positives:", m[0,0]/total)
+print("False Positives:", m[0,1]/total)
+print("True Negatives:", m[1,1]/total)
+print("False Negatives:", m[1,0]/total)
 ratio = (m[0,0]+m[1,1])/total
 print("Acccuracy:", ratio)
 ```
+
+## Visual Confusion Matrix
+
+We can visualize it directly with:
+
+```python
+from sklearn.metrics import ConfusionMatrixDisplay
+
+disp=ConfusionMatrixDisplay(confusion_matrix=m)
+disp.plot()
+```
+
+We can also use the model and test to visualize the Confusion Matrix. Also, it can be normalized:
+
+```python
+ConfusionMatrixDisplay.from_predictions(target_test, pred1, normalize='all')
+```
+
+It can be observed that results are similar to previous ones.
+
+We can also normalize by rows:
+
+```python
+ConfusionMatrixDisplay.from_predictions(target_test, pred1, normalize='true')
+```
+
+This means that it is very good predicting one class, not the other one.
