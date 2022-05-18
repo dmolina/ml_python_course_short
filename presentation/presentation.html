@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Daniel Molina">
+  <title>Machine Learning with Python</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/sky.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Machine Learning with Python</h1>
+  <p class="author">Daniel Molina</p>
+  <p class="date">23 May</p>
+</section>
+<section id="TOC">
+<nav role="doc-toc"> 
+
+</nav>
+</section>
+
+<section>
+<section id="about-me" class="title-slide slide level1">
+<h1>About me</h1>
+
+</section>
+<section id="daniel-molina-cabrera" class="slide level2">
+<h2>Daniel Molina Cabrera</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="yo_serio.png" style="width:50.0%" /></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Senior lecturer at University of Granada.</li>
+<li>More than 15 years Working on AI.</li>
+<li>Courses: Machine Learning and Preprocessing.</li>
+<li>H-Index: 23</li>
+</ul>
+</div>
+</div>
+</section></section>
+<section>
+<section id="python" class="title-slide slide level1">
+<h1>Python</h1>
+
+</section>
+<section id="python-1" class="slide level2">
+<h2>Python?</h2>
+<p><img data-src="python_real.jpg" style="width:45.0%" /></p>
+</section>
+<section id="python-2" class="slide level2">
+<h2>Python?</h2>
+<p><img data-src="monty_python.jpg" style="width:45.0%" /></p>
+</section>
+<section id="python-3" class="slide level2">
+<h2>Python?</h2>
+<p><img data-src="python_logo.png" style="width:45.0%" /></p>
+</section>
+<section id="it-is-a-programming-language" class="slide level2">
+<h2>It is a programming language</h2>
+<ul>
+<li>For generic usage.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Designed to be <strong>easy to use</strong> and
+<strong>fun</strong>.</li>
+</ul>
+</div>
+</section>
+<section id="invented-by" class="slide level2">
+<h2>Invented by</h2>
+<figure>
+<img data-src="guido.jpg" alt="Guido Van Rossum" />
+<figcaption aria-hidden="true">Guido Van Rossum</figcaption>
+</figure>
+</section></section>
+<section>
+<section id="why-python" class="title-slide slide level1">
+<h1>Why Python?</h1>
+
+</section>
+<section id="it-is-popular" class="slide level2">
+<h2>It is popular</h2>
+<p><img data-src="python_evolucion.png" style="width:70.0%" /></p>
+</section>
+<section id="many-libraries-in-ds" class="slide level2">
+<h2>Many libraries in DS</h2>
+<p><img data-src="librerias_ciencia.png" style="width:70.0%" /></p>
+</section>
+<section id="specially-in-machine-learning" class="slide level2">
+<h2>Specially in Machine Learning</h2>
+<p><img data-src="MLpython.png" style="width:70.0%" /></p>
+</section>
+<section id="and-deep-learning" class="slide level2">
+<h2>And Deep Learning</h2>
+<p><img data-src="DLpython.png" style="width:70.0%" /></p>
+</section>
+<section id="easy" class="slide level2">
+<h2>Easy</h2>
+<pre><code>from sys import argv
+
+def main(fname, word):
+    with open(fname, &quot;r&quot;) as file:
+
+        for line in file:
+            if word in line:
+                print(line)
+
+if __name__ == &quot;__main__&quot;:
+    main(argv[2], argv[1])
+</code></pre>
+</section></section>
+<section>
+<section id="requirement" class="title-slide slide level1">
+<h1>Requirement</h1>
+
+</section>
+<section id="requirement-1" class="slide level2">
+<h2>Requirement</h2>
+<div class="columns">
+<div class="column" style="width:32%;">
+<p><img data-src="python_logo.png" data-with="80%" /></p>
+</div><div class="column" style="width:32%;">
+<p><img data-src="logo-anaconda.png" data-with="80%" /></p>
+</div><div class="column" style="width:32%;">
+<p><img data-src="brain3.jpg" data-with="80%" /></p>
+</div>
+</div>
+</section>
+<section id="requirement-2" class="slide level2">
+<h2>Requirement</h2>
+<ul>
+<li><p>Computer.</p></li>
+<li><p>Any Operative System: Windows, MacOS, Linux.</p></li>
+<li><p>We will use Python3 using Anaconda.</p></li>
+</ul>
+<p><img data-src="logo-anaconda.png" style="width:25.0%" /></p>
+</section>
+<section id="installation" class="slide level2">
+<h2>Installation</h2>
+<p>From <a
+href="https://docs.anaconda.com/anaconda/install/">https://docs.anaconda.com/anaconda/install/</a></p>
+<p><img data-src="anaconda_download.png" /></p>
+</section>
+<section id="windows" class="slide level2">
+<h2>windows</h2>
+</section>
+<section id="install" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_win1.png" style="width:70.0%" /></p>
+</section>
+<section id="install-1" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_win2.png" style="width:70.0%" /></p>
+</section>
+<section id="install-2" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_win3.png" style="width:70.0%" /></p>
+</section>
+<section id="install-3" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_win4.png" style="width:70.0%" /></p>
+</section>
+<section id="macos" class="slide level2">
+<h2>MacOs</h2>
+</section>
+<section id="install-4" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_mac1.png" style="width:70.0%" /></p>
+</section>
+<section id="install-5" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_mac2.png" style="width:70.0%" /></p>
+</section>
+<section id="install-6" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_mac3.png" style="width:70.0%" /></p>
+</section>
+<section id="install-7" class="slide level2">
+<h2>Install</h2>
+<p><img data-src="install_mac4.png" style="width:70.0%" /></p>
+</section>
+<section id="linux" class="slide level2">
+<h2>Linux</h2>
+<p>Using Anaconda</p>
+<pre><code>bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh</code></pre>
+</section></section>
+<section>
+<section id="frameworks" class="title-slide slide level1">
+<h1>Frameworks</h1>
+
+</section>
+<section id="notebook" class="slide level2">
+<h2>Notebook</h2>
+<p><img data-src="notebook2.png" style="width:70.0%" /></p>
+</section>
+<section id="advantages" class="slide level2">
+<h2>Advantages</h2>
+<ul>
+<li><p>Code in cells.</p></li>
+<li><p>Interactive.</p></li>
+<li><p>Documentation, cells in markdown.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><img data-src="anaconda_navigator.jpg" /></p>
+</section>
+<section class="slide level2">
+
+<p><img data-src="jupyter_console.jpg" /></p>
+</section>
+<section id="colab" class="slide level2">
+<h2>Colab</h2>
+<p><a
+href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
+<ul>
+<li><p>Service for programming in Python.</p></li>
+<li><p>Use for CPU or GPU (paying after several hours).</p></li>
+<li><p>It requires Google account.</p></li>
+</ul>
+</section>
+<section id="colab-1" class="slide level2">
+<h2>Colab</h2>
+<p><img data-src="colab.png" style="width:90.0%" /></p>
+</section>
+<section id="spyder" class="slide level2">
+<h2>Spyder</h2>
+<p><img data-src="Spyder-IDE.png" /></p>
+</section>
+<section id="ipython-console" class="slide level2">
+<h2>IPython Console</h2>
+<p><img data-src="ipython.png" style="width:70.0%" /></p>
+</section>
+<section id="python-console" class="slide level2">
+<h2>Python Console</h2>
+<p><img data-src="python.png" style="width:70.0%" /></p>
+</section></section>
+<section>
+<section id="about-the-course" class="title-slide slide level1">
+<h1>About the course</h1>
+
+</section>
+<section id="first-day-monday" class="slide level2">
+<h2>First day (Monday)</h2>
+<ul>
+<li><p>We will focus on supervised learning with Python.</p></li>
+<li><p>Learning by project.</p></li>
+<li><p>Available Notebooks.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="parts">Parts</h3>
+<ol type="1">
+<li><p>About Python in Data Science.</p></li>
+<li><p>Pandas, simple preprocessing.</p></li>
+<li><p>Scikit-learn with simple dataset.</p></li>
+<li><p>Processing missing values.</p></li>
+<li><p>Visualization.</p></li>
+<li><p>Working on a more complex dataset.</p></li>
+</ol>
+</section>
+<section id="second-day" class="slide level2">
+<h2>Second day</h2>
+<ul>
+<li><p>We will focus on unsupervised learning with Python.</p></li>
+<li><p>Extracting information:</p>
+<ol type="1">
+<li>Automatic grouping.</li>
+<li>Rules Generation.</li>
+</ol></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="parts-1">Parts</h3>
+<ol type="1">
+<li><p>Example Dataset.</p></li>
+<li><p>Grouping groups of datasets.</p></li>
+<li><p>Automatic Grouping.</p></li>
+<li><p>Visualization of centroids.</p></li>
+<li><p>Automatic rules generation.</p></li>
+</ol>
+</section></section>
+<section>
+<section id="questions" class="title-slide slide level1">
+<h1>Questions?</h1>
+
+</section>
+<section id="we-will-start" class="slide level2">
+<h2>We will start?</h2>
+<p><img data-src="start-button.jpg" style="width:50.0%" /></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
