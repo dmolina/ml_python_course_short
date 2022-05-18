@@ -233,12 +233,10 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 3. Scikit-learn with simple dataset.
 
-4. Processing missing values.
+4. Several useful models.
 
 5. Visualization.
 
-6. Working on a more complex dataset.
-  
 ## Second day 
 
 - We will focus on unsupervised learning with Python.
