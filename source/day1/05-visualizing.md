@@ -120,7 +120,7 @@ ax1.scatter(np.random.rand(10), np.arange(10))
 
 # Seaborn
 
-No es diferente de programar en Matplotlib, pero tiene cosas interesantes.
+It is not different to Matplotlib, but it has several interesting advantages:
 
 ```python
 import seaborn as sns
@@ -141,23 +141,23 @@ def example_plots():
 example_plots()
 ```
 
-## Cambiando estilo
+## We change the style
 
-
-Se pueden probar otros themas.
+Several themes can be used:
 
 ```python
 sns.set_style('whitegrid')
 example_plots()
 ```
 
-Se pueden [configurar más estilos](https://seaborn.pydata.org/tutorial/aesthetics.html).
+You can [set more styles](https://seaborn.pydata.org/tutorial/aesthetics.html).
 
 
-## Tipos de Gráficas
+## More pictures
 
+The better of seaborn are its [own graphics](http://seaborn.pydata.org/tutorial.html).
 
-Pero lo bueno de seaborn son sus [propios tipos de gráficas](http://seaborn.pydata.org/tutorial.html).
+We will analyse the tip in several  restaurants.
 
 ```python
 tips = sns.load_dataset("tips")
@@ -172,19 +172,16 @@ y = np.linspace(0, 10, 2)
 ax.plot(x,  y, color='red')
 ```
 
-Se ve que se pasa como data el DataFrame, y luego se puede indicar para cada dimensión el atributo del DataFrame (sólo se tienen en cuenta los usados).
+It can be seen that it accepts DataFrame as data, and you can indicate for each dimension the corresponding attribute from the DataFrame. 
 
+## Identifying several groups
 
-## Identificando por objetivo
+How is the different considering if the client is smoker or not? There are several options:
 
-
-¿y si se quiere ver cuáles son fumadores? Habría dos opciones.
-
-
-- Usando campo hue, que indica el atributo para distinguirlo, los datos de cada tipo tendrán un color, y se marcarán en la leyenda.
+1. Using field `hue`, that indicate the attribute to separate, data of each group will have a different color, and it will be remarked in the legend.
 
 ```python
-tips['barato'] = tips.total_bill > 30;
+tips['cheap'] = tips.total_bill > 30;
 sns.relplot(x="total_bill", y="tip", data=tips, col="time", hue="smoker", style="sex")
 ```
 
@@ -196,43 +193,43 @@ tips['ratio'] = tips.tip/tips.total_bill
 sns.histplot(data=tips, x="total_bill", y="ratio")
 ```
 
-Recientemente permite un campo col.
+2. The other option is using a field `col`, to create a new subfigure.
 
 ```python
 sns.relplot(x="total_bill", y="tip", data=tips, col="smoker")
 ```
 
-- Usando un FacetGrid que permite discriminar en función de un tipo por columna o fila, y luego con map pintar cada uno de ellos.
+3. Using a FacetGrid that allow us to separate in rows or column, and then with `map` to draw each one of them.
 
 ```python
 g = sns.FacetGrid(data=tips, col="smoker")
 g.map(sns.scatterplot, "total_bill", "tip")
 ```
 
-Ahora veremos algunos tipos de gráficas muy útiles.
+Now we will see another useful drawing.
 
 ```python
-sns.boxplot(data=tips, y='ratio', x='barato')
+sns.boxplot(data=tips, y='ratio', x='cheap')
 ```
 
 ```python
 sns.countplot(data=tips, x='smoker')
 ```
 
-Es muy potente:
+It is very potent:
 
 ```python
 sns.scatterplot(data=tips, x="total_bill", y="tip", hue="day", style="time")
 ```
 
-Algo más grande:
+A little bigger:
 
 ```python
 fig2, ax2 = plt.subplots(figsize=(12,7))
 sns.scatterplot(data=tips, x="total_bill", y="tip", hue="day", style="time", ax=ax2)
 ```
 
-Para manejar varios:
+To manage several of them:
 
 ```python
 penguins = sns.load_dataset("penguins")
@@ -243,7 +240,7 @@ sns.pairplot(penguins)
 sns.pairplot(penguins, hue="species")
 ```
 
-# Ejemplo: Scikit-learn
+# Several Scikit-learn examples
 
 ```python
 from sklearn import datasets, metrics, model_selection, svm, tree
@@ -259,20 +256,16 @@ X
 y
 ```
 
-```python
-
-```
-
-Vamos a visualizar una curva ROC
+We are going to visualize a ROC picture:
 
 ```python
 svc = svm.SVC(random_state=0)
 svc.fit(X_train, y_train)
-metrics.plot_roc_curve(svc, X_test, y_test)  # doctest: +SKIP
-plt.show()                                   # doctest: +SKIP
+metrics.RocCurveDisplay.from_estimator(svc, X_test, y_test) 
+plt.show()                                   
 ```
 
-Para añadir otros algoritmos es igual, solo hay que indicar que el campo ax es el mismo en todas.
+To append more algorithms is the same thing, it is only required to use the same field `ax` in all of them.
 
 ```python
 model_tree = tree.DecisionTreeClassifier(max_depth=5)
@@ -280,15 +273,15 @@ model_tree = tree.DecisionTreeClassifier(max_depth=5)
 
 ```python
 model_tree.fit(X_train, y_train)
-plot2 = metrics.plot_roc_curve(model_tree, X_test, y_test)  # doctest: +SKIP
-plt.show()                                   # doctest: +SKIP
+plot2 = metrics.RocCurveDisplay.from_estimator(model_tree, X_test, y_test) 
+plt.show()                      
 ```
 
-Si queremos ponerlo en la misma, indicamos el campo ax en el segundo (para reutilizar la figura anterior y no crear una nueva)
+If we want to use the same way, we reuse the field `ax` (to reuse the previous figure and not to create a new one).
 
 ```python
 ax = plt.gca()
 
 for model in [svc, model_tree]:
-    metrics.plot_roc_curve(model, X_test, y_test, ax=ax)  
+    metrics.RocCurveDisplay.from_estimator(model, X_test, y_test, ax=ax)  
 ```
