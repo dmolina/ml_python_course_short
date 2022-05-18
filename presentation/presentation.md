@@ -227,13 +227,17 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 ### Parts
 
-1. Pandas, simple preprocessing.
+1. About Python in Data Science. 
 
-2. Simple visualization.
+2. Pandas, simple preprocessing.
 
 3. Scikit-learn with simple dataset.
 
-4. Working on a more complex dataset.
+4. Processing missing values.
+
+5. Visualization.
+
+6. Working on a more complex dataset.
   
 ## Second day 
 
