@@ -12,6 +12,7 @@ for file in source/day1/0*.md; do
 done
 
 cp source/day1/*.csv notebooks/day1/
+cp source/day1/*.arff notebooks/day1/
 cp source/day2/*.csv notebooks/day2/
 
 jupyter notebook notebooks
