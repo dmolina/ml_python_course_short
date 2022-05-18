@@ -1,4 +1,4 @@
-cd presentation && pandoc intro_en.md -t revealjs -s -Vtheme:sky -o intro_en.html && cd -
+cd presentation && pandoc presentation.md -t revealjs -s -Vtheme:sky -o presentation.html && cd -
 
 for file in source/day1/0*.md; do
     fname=$(basename $file)
