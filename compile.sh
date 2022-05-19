@@ -1,4 +1,5 @@
 cd presentation && pandoc presentation.md -t revealjs -s -Vtheme:sky -o presentation.html && cd -
+rm notebooks/day1/*
 
 for file in source/day1/0*.md; do
     fname=$(basename $file)
@@ -15,4 +16,6 @@ cp source/day1/*.csv notebooks/day1/
 cp source/day1/*.arff notebooks/day1/
 cp source/day2/*.csv notebooks/day2/
 
-jupyter notebook notebooks
+if [ "$1" eq "run" ]; then
+    jupyter notebook notebooks
+fi

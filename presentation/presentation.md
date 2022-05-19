@@ -227,8 +227,6 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 ### Parts
 
-1. About Python in Data Science. 
-
 2. Pandas, simple preprocessing.
 
 3. Scikit-learn with simple dataset.
