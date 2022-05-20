@@ -227,13 +227,13 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 ### Parts
 
-2. Pandas, simple preprocessing.
+1. Pandas, simple preprocessing.
 
-3. Scikit-learn with simple dataset.
+2. Scikit-learn with simple dataset.
 
-4. Several useful models.
+3. Several useful models.
 
-5. Visualization.
+4. Visualization.
 
 ## Second day 
 
@@ -247,11 +247,13 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 
 ### Parts
 
-1. Example Dataset.
+1. Model for Unsupervised Learning.
 
-2. Grouping groups of datasets.
+2. Extracting information by clustering.
 
-3. Automatic Grouping.
+3. Tackle a Real Problem.
+
+4. Association Rules.
 
 2. Visualization of centroids. 
 

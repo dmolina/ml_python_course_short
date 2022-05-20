@@ -29,6 +29,6 @@ done
 
 
 
-if [ "$1" -eq "run" ]; then
+if [ "$1" = "run" ]; then
     jupyter notebook notebooks
 fi
