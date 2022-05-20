@@ -16,6 +16,19 @@ cp source/day1/*.csv notebooks/day1/
 cp source/day1/*.arff notebooks/day1/
 cp source/day2/*.csv notebooks/day2/
 
-if [ "$1" eq "run" ]; then
+for file in source/day2/0*.md; do
+    fname=$(basename $file)
+    foutput=notebooks/day2/${fname%.*}.ipynb
+
+    if [ -f $foutput ]; then
+        jupytext $file --to ipynb --update -o $foutput
+    else
+        jupytext $file --to ipynb -o $foutput
+    fi
+done
+
+
+
+if [ "$1" -eq "run" ]; then
     jupyter notebook notebooks
 fi
