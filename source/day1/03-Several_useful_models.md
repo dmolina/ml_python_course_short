@@ -7,8 +7,17 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.13.8
   kernelspec:
+    argv:
+    - python
+    - -m
+    - ipykernel_launcher
+    - -f
+    - '{connection_file}'
     display_name: Python 3
+    env: null
+    interrupt_mode: signal
     language: python
+    metadata: null
     name: python3
 ---
 
@@ -324,6 +333,126 @@ model_rf = RandomForestClassifier(n_estimators=50) # Limit the number of trees
 ```python
 cross_val_score(model_rf, X, y, cv=5).mean()
 ```
+
+# Regression
+
+Although all previous examples are for classification, another important usage of ML is to do regression, in which we are not interesting in predict the category of a feature, but to predict a numerical feature, like the temperature for next day or the price of an item. In the following, we will see how to predict with popular XGBoost and with a Random Forest.
+
+In Scikit-learn the final part of the name of the models indicate if they are classifier or for Regression, you can see the documentation to see many models for regression.
+
+<!-- #region -->
+## California Housing
+
+This dataset implies to try to predict the price of houses in Boston. They use 8 features:
+
+
+- **MedInc** median income in block group
+- **HouseAge** median house age in block group
+- **AveRooms** average number of rooms per household
+- **AveBedrms** average number of bedrooms per household
+- **Population** block group population
+- **AveOccup** average number of household members
+- **Latitude** block group latitude
+- **Longitude** block group longitude
+
+<!-- #endregion -->
+
+## XGBoost
+
+Although scikit-learn is the most used library for Machine Learning (aside for Deep Learning) it is not the only package with interesting models. There are specific libraries implementing specific models, as XGBoost.
+
+XGBoost is an optimized distributed gradient boosting library that implements machine learning
+algorithms under the Gradient Boosting framework. XGBoost provides a parallel tree boosting (also
+known as GBDT, GBM) that solve many data science problems in a fast and accurate way. 
+
+This is the first example using regression, that it is another important approach for ML.
+
+```python
+from sklearn.datasets import fetch_california_housing
+
+data = fetch_california_housing()
+```
+
+```python
+X = data.data
+y = data.target
+feature_names = data.feature_names
+```
+
+In order to evaluate the performance of our model, we split the data into training and test sets.
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+```
+
+We load the package.
+
+```python
+import xgboost as xgb
+```
+
+Next, we initialize an instance of the XGBRegressor class. We can select the value of Lambda and Gamma, as well as the number of estimators and maximum tree depth.
+
+```python
+regressor = xgb.XGBRegressor(
+    n_estimators=100,
+    reg_lambda=1, 
+    gamma=0,
+    max_depth=3,
+    random_state = 42,
+)
+```
+
+We fit our model to the training set.
+
+```python
+regressor.fit(X_train, y_train)
+```
+
+We can examine the relative importance attributed to each feature, in determining the house price.
+
+```python
+pd.DataFrame(regressor.feature_importances_.reshape(1, -1), columns=feature_names)
+```
+
+As we can see, the median of incoming in the block is the greatest predictor of house price.
+
+
+Finally, we use our model to predict the price of a house given what it has learnt.
+
+```python
+y_pred = regressor.predict(X_test)
+```
+
+We use the mean squared error to evaluate the model performance. The mean squared error is the average of the differences between the predictions and the actual values squared.
+
+```python
+from sklearn.metrics import mean_squared_error
+```
+
+```python
+mean_squared_error(y_test, y_pred)
+```
+
+## RandomForestRegressor
+
+We are going to compare against another regression model, the **RandomForestRegressor**, using the
+same common parameters.
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+rf_regres = RandomForestRegressor(max_depth=3, n_estimators=100, random_state=42)
+```
+
+```python
+y_pred2 = rf_regres.fit(X_train, y_train).predict(X_test)
+```
+
+```python
+mean_squared_error(y_test, y_pred2)
+```
+
+It can be seen that the mean squared error from Random Forest is more than the double than using XGBoost.
 
 # Task: Tackle 
 
