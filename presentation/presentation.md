@@ -240,24 +240,21 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh
 - We will focus on unsupervised learning with Python.
 
 - Extracting information:
-    1. Automatic grouping. 
+    1. Clustering and its visualization. 
     2. Rules Generation.
     
 ---
 
 ### Parts
 
-1. Model for Unsupervised Learning.
+5. Model for Unsupervised Learning.
 
-2. Extracting information by clustering.
+6. Extracting information by clustering.
 
-3. Tackle a Real Problem.
+7. Association Rules.
 
-4. Association Rules.
+8. Real Problem.
 
-2. Visualization of centroids. 
-
-3. Automatic rules generation.
 
 # Questions?
 
