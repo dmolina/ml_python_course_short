@@ -1,6 +1,7 @@
 # Short course about Machine Learning with Python
 
-Material for a short course (two days) about Machine Learning using Python
+Material for a short course (two days) about Machine Learning using Python, for
+3 hours each day (it could be extended in more time to be more relaxed).
 
 
 # Additional Resource
